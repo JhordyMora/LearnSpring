@@ -4,6 +4,7 @@ import models.Usuario;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -56,6 +57,22 @@ public class IndexController {
         model.addAttribute("usuarios", usuarios);
         return "listar";
     }
+
+    @GetMapping(value = "/listarModelAtributeAnotation")
+    public String listarModelAtributeAnotation(Model model) {
+        model.addAttribute("titulo", "Listado de usuarios con anotacion Model Attribute");
+        return "listarModelAtributeAnotation";
+    }
+    @ModelAttribute("usuarios")
+    // esta anotacion sirve como la clase Model vista anteriormente pero ahora se pude usar una anotacion para agregar los atributos a la clase model. 
+    // Estos atributos visible para todos los metodos de esta clase que tengan la clase Model como parametro,
+    // y lo que hace esta anotacion es escribir model.addAttribute("usuarios", la lista generada aqui)
+    public List<Usuario> listaUsarios(){
+        return List.of(new Usuario("Juan", "Malo", "malo@mail.com")
+                , new Usuario("Orlando", "Ramirez", "ramirez@mail.com")
+                , new Usuario("Pedro", "Mora", "mora@mail.com"));
+    }
+
 
 }
 
