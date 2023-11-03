@@ -72,8 +72,6 @@ public class IndexController {
                 , new Usuario("Orlando", "Ramirez", "ramirez@mail.com")
                 , new Usuario("Pedro", "Mora", "mora@mail.com"));
     }
-
-
 }
 
 

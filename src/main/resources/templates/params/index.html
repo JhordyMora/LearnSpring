@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Recivir parámetros del Request HTTP GET - URL</title>
+</head>
+<body>
+<h1>Recivir parámetros del Request HTTP GET - URL</h1>
+<ul>
+    <li>
+        <a th:href="@{/params/string(texto='Hola desde otra pagina')}">Redirige a la pagina params/string con params =
+            Hola
+            desde otra pagina.
+            En Thymeleaf se usa th:ref y en vez de usar $ se usa @ para rutas propias del proyecto y recursos(docs, js).
+            Si ademas se pasan los parametros se hace con ('..')</a>
+    </li>
+    <li>
+        <a th:href="@{/params/string(texto='Otra Palabra')}">Redirige a la pagina params/string con params = Otra
+            Palabra.
+            En Thymeleaf se usa th:ref y en vez de usar $ se usa @ para rutas propias del proyecto y recursos(docs, js).
+            Si ademas se pasan los parametros se hace con ('..')</a>
+    </li>
+    <li>
+        <a th:href="@{/params/string}">Redirige a la pagina params/string sin params.
+            En Thymeleaf se usa th:ref y en vez de usar $ se usa @ para rutas propias del proyecto y recursos(docs, js).
+            Si ademas se pasan los parametros se hace con ('..')</a>
+    </li>
+    <li>
+        <a th:href="@{/params/mix-params(saludo='Saludo desde mix params', numero=3)}">Redirige a la pagina
+            params/mix-params.
+            En Thymeleaf se usa th:ref y en vez de usar $ se usa @ para rutas propias del proyecto y recursos(docs, js).
+            Si ademas se pasan los parametros se hace con ('..')</a>
+    </li>
+    <li>
+        <a th:href="@{/params/mix-params-httpRequest(saludo='Saludo desde mix params Request', numero=1)}">Redirige a la pagina
+            params/mix-params-httpRequest.
+            En Thymeleaf se usa th:ref y en vez de usar $ se usa @ para rutas propias del proyecto y recursos(docs, js).
+            Si ademas se pasan los parametros se hace con ('..')</a>
+    </li>
+</ul>
+</body>
+</html>
