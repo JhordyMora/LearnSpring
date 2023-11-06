@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8"/>
     <title th:text="${titulo}"></title>
+<!--    no se pone static en th:ref pq es la carpeta definida por spring boot -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1 th:text="${titulo}"></h1>
+<h1 class="color-rojo" th:text="${titulo}"></h1>
+<h2 class="color-azul">Aplicando estilos css desde la carpeta de statics</h2>
+<!--    no se pone static en th:ref pq es la carpeta definida por spring boot -->
+<img th:src="@{/images/logo_spring.png}">
 </body>
 </html>
