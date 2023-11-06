@@ -1,7 +1,6 @@
 package controller;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +38,7 @@ public class ParamsController {
         return "params/ver";
     }
 
-    // Manera 2 con HttpServletResponse y capturamos los parametros en variables
+    // Manera 2: con HttpServletResponse y capturamos los parametros en variables
     @GetMapping("/mix-params-httpRequest")
     public String param(HttpServletRequest request, Model model) {
         String saludo = request.getParameter("saludo");

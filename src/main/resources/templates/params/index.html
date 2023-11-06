@@ -10,7 +10,11 @@
 <body>
 <h1>Recivir parámetros del Request HTTP GET - URL</h1>
 <ul>
+    <!--    Para referencia algun link de alguna pagina interna del proyecto no imparto el paquete (si esta en el
+proyecto se usa th:href="@... El @ es importante ahora y no el $ -->
     <li>
+        <!--        para el request param y el path variable se llaman de manera diferente. En RequestParam se llama
+                 como metodo  string(texto='Hola...') y en PathVariable se concatena. Mirar ../variables/index.html-->
         <a th:href="@{/params/string(texto='Hola desde otra pagina')}">Redirige a la pagina params/string con params =
             Hola
             desde otra pagina.

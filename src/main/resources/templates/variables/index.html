@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+<h1 th:text="${titulo}"></h1>
+<ul>
+    <!--    Para referencia algun link de alguna pagina interna del proyecto no imparto el paquete (si esta en el
+    proyecto se usa th:href="@... El @ es importante ahora y no el $ -->
+    <li>
+        <a th:href="@{/params/string(texto='Hola desde otra pagina')}">Redirige a la pagina params/string con params =
+            Hola desde otra pagina.
+            En Thymeleaf se usa th:ref y en vez de usar $ se usa @ para rutas propias del proyecto y recursos(docs, js).
+            Si ademas se pasan los parametros se hace con ('..')</a>
+    </li>
+    <li>
+        <!--        para el request param y el path variable se llaman de manera diferente. En RequestParam se llama
+         como metodo  string(texto='Hola...') y en PathVariable se concatena. Mirar abajo-->
+        <a th:href="@{/variables/string/} + 'Hola Pedro' ">Redirige a la pagina variables/string/Hola Pedro
+            En Thymeleaf se usa th:ref y en vez de usar $ se usa @ para rutas propias del proyecto y recursos(docs, js).
+            Si ademas se pasan los parametros se hace con ('..')</a>
+    </li>
+    <li>
+        <a th:href="@{/variables/string/} + 'Que tal Juan' ">Redirige a la pagina variables/string/Que tal Juan
+            En Thymeleaf se usa th:ref y en vez de usar $ se usa @ para rutas propias del proyecto y recursos(docs, js).
+            Si ademas se pasan los parametros se hace con ('..')</a>
+    </li>
+    <!--    Para varios PathVariables se puede hacer de las tres siguientes formas, las primeras tres formas son
+    pasandole los datos y la ultima pasando una variable-->
+    <li>
+        <a th:href="@{/variables/string/} + 'Saluton' + '/' + '8'">Redirige a la pagina variables/string/Saluton/8
+            En Thymeleaf se usa th:ref y en vez de usar $ se usa @ para rutas propias del proyecto y recursos(docs, js).
+            Si ademas se pasan los parametros se hace con ('..')</a>
+    </li>
+    <li>
+        <a th:href="@{/variables/string/} + 'Saluton/8' ">Redirige a la pagina variables/string/Saluton/8
+            En Thymeleaf se usa th:ref y en vez de usar $ se usa @ para rutas propias del proyecto y recursos(docs, js).
+            Si ademas se pasan los parametros se hace con ('..')</a>
+    </li>
+<!--    si se usa esta manera recordar que como Saluton no es una variable hay que poner las '... ', sino piensa que
+es una variable y lo reconociera como null-->
+    <li>
+        <a th:href="@{/variables/string/} + ${'Saluton'} + '/' + ${'8'}">Redirige a la pagina variables/string/Saluton/8
+            En Thymeleaf se usa th:ref y en vez de usar $ se usa @ para rutas propias del proyecto y recursos(docs, js).
+            Si ademas se pasan los parametros se hace con ('..')</a>
+    </li>
+    <li>
+        <a th:href="@{/variables/string/} + ${titulo} + '/' + ${8}">Redirige a la pagina variables/string/Enviar
+            parametros de la ruta (@PathVariable)/8
+            En Thymeleaf se usa th:ref y en vez de usar $ se usa @ para rutas propias del proyecto y recursos(docs, js).
+            Si ademas se pasan los parametros se hace con ('..')</a>
+    </li>
+</ul>
+</body>
+</html>
