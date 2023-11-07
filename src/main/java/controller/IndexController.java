@@ -1,6 +1,7 @@
 package controller;
 
 import models.Usuario;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,13 @@ import java.util.Map;
 @RequestMapping("/app")
 public class IndexController {
 
+    @Value("${texto.indexController.index.titulo}")
+    private String textoIndex;
+    @Value("${texto.indexController.perfil.titulo}")
+    private String textoPerfil;
+    @Value("${texto.indexController.listar.titulo}")
+    private String textoListar;
+
     @RequestMapping(value = "/index", method = RequestMethod.GET)
 //    @GetMapping(value = "/index") // se puede usar el get mapping para hacer el metodo get como default
 //    @RequestMapping(value = {"/index", "/inicio", "/"}, method = RequestMethod.GET) // esto se puede hacer para asigna el metodo a varios urls
@@ -24,7 +32,7 @@ public class IndexController {
 //    public String index(ModelMap model){
     public String index(Map<String, Object> map) {
 //        model.addAttribute("titulo", "Hola Spring Framework! Mi perrito"); // este metodo se usa con Model y ModelMap
-        map.put("titulo", "Hola Spring Framework con map!");
+        map.put("titulo", textoIndex);
         return "index";// aqui se pone el nombre del html que esta en templates sin la extencion. Spring lo encuentra automaticamente
     }
 
@@ -43,7 +51,7 @@ public class IndexController {
         usuario.setApellido("Mora");
         usuario.setEmail("jhordy@mail.com");
         model.addAttribute("usuario", usuario);
-        model.addAttribute("titulo", "Perfil del usuario: " + usuario.getNombre());
+        model.addAttribute("titulo", textoPerfil + usuario.getNombre());
 //        model.addAttribute("titulo", "Perfil del usuario: ".concat(usuario.getNombre())); // otra manera de concatenar
         return "perfil";
     }
@@ -53,7 +61,7 @@ public class IndexController {
         Collection<Usuario> usuarios = List.of(new Usuario("Juan", "Malo", "malo@mail.com")
                 , new Usuario("Orlando", "Ramirez", "ramirez@mail.com")
                 , new Usuario("Pedro", "Mora", "mora@mail.com"));
-        model.addAttribute("titulo", "Listado de usuarios");
+        model.addAttribute("titulo", textoListar);
         model.addAttribute("usuarios", usuarios);
         return "listar";
     }
